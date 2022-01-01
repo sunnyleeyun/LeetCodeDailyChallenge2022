@@ -1,1 +1,1 @@
-# LeetCodeDailyChallenge2022
+# LeetCode Daily Challenge 2022
