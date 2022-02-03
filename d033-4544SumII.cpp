@@ -8,7 +8,7 @@ public:
         }
         for (int &n3 : nums3) {
             for (int &n4 : nums4) {
-                if (m[-n3 - n4] > 0) res += m[-n3 - n4];
+                res += m[-n3 - n4];
             }
         }
         return res;
