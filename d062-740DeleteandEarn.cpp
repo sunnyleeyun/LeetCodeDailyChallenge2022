@@ -1,18 +1,14 @@
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
-        int n = 10001;
-        vector<int> values(n, 0);
-        for (int num : nums)
-            values[num] += num;
-
-        int take = 0, skip = 0;
-        for (int i = 0; i < n; i++) {
-            int takei = skip + values[i];
-            int skipi = max(skip, take);
-            take = takei;
-            skip = skipi;
+        vector<int> buckets(10001);
+        for (int &num : nums) buckets[num] += num;
+        vector<int> dp(10001);
+        dp[0] = buckets[0];
+        dp[1] = buckets[1];
+        for (int i = 2; i < buckets.size(); ++i) {
+            dp[i] = max(buckets[i] + dp[i - 2], dp[i - 1]);
         }
-        return max(take, skip);
+        return dp[10000];
     }
 };
